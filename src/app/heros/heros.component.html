@@ -7,7 +7,7 @@
   <input id="new-hero" #heroLvl />
 
   <!-- (click) passes input value to add() and then clears the input -->
-  <button type="button" class="add-button" (click)="add(heroNom_legendaire.value, heroLvl); heroNom_legendaire.value=''">
+  <button type="button" class="add-button" (click)="add(heroNom_legendaire.value, heroLvl); heroNom_legendaire.value=''; heroLvl.value='';">
     Add hero
   </button>
 </div>

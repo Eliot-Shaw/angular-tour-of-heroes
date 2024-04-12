@@ -36,7 +36,7 @@ export class HerosComponent implements OnInit {
   add(nom_legendaireInput: string, lvlInput: HTMLInputElement){
     const lvl = parseInt(lvlInput.value);
     const nom_legendaire = nom_legendaireInput.trim();
-    if(!nom_legendaire) return;
+    if(!nom_legendaire || isNaN(lvl)) return;
     this.heroService.addHero({nom_legendaire, lvl} as Hero)
       .subscribe(hero => {this.heros.push(hero);});
   }

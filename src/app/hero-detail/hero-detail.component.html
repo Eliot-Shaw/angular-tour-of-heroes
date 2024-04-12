@@ -5,6 +5,9 @@
       <label for="hero-name">Nom Légendaire: </label>
       <input id="hero-name" [(ngModel)]="hero.nom_legendaire" placeholder="nom_legendaire">
     </div>
+    <div>
+      <button type="button" (click)="pex()">Pex {{experience}}/{{neededXP(hero.lvl)}}</button>
+    </div>
 </div>
 
 <div *ngIf="!hero">
