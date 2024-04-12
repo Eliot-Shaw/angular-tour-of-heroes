@@ -23,7 +23,7 @@ export class HerosComponent implements OnInit {
   heros: Hero[] = [];
   
   getHeros(): void {
-    this.messageService.add(`HerosComponent : got Heros`)
+    this.messageService.add(`HerosComponent : call getHeros`)
     this.heroService.getHeros()
     .subscribe(heros => this.heros = heros);
   }
@@ -31,5 +31,18 @@ export class HerosComponent implements OnInit {
   getHero(id: number): Observable<Hero>  {
     this.messageService.add(`HerosComponent : got hero #${id}`)
     return this.heroService.getHero(id);
+  }
+
+  add(nom_legendaireInput: string, lvlInput: HTMLInputElement){
+    const lvl = parseInt(lvlInput.value);
+    const nom_legendaire = nom_legendaireInput.trim();
+    if(!nom_legendaire) return;
+    this.heroService.addHero({nom_legendaire, lvl} as Hero)
+      .subscribe(hero => {this.heros.push(hero);});
+  }
+
+  delete(hero: Hero){
+      this.heros = this.heros.filter(hero_to_b_deleted => hero_to_b_deleted !== hero);
+      this.heroService.deleteHero(hero.id).subscribe();
   }
 }

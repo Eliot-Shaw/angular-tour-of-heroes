@@ -1,12 +1,24 @@
 <h2>Les heros</h2>
 
+<div>
+  <label for="new-hero">Nom de la légende : </label>
+  <input id="new-hero" #heroNom_legendaire />
+  <label for="new-hero">Niveau : </label>
+  <input id="new-hero" #heroLvl />
 
-<ul class="heros">
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button type="button" class="add-button" (click)="add(heroNom_legendaire.value, heroLvl); heroNom_legendaire.value=''">
+    Add hero
+  </button>
+</div>
+
+<ul class="heroes">
   <li *ngFor="let hero of heros">
     <a routerLink="/detail/{{hero.id}}">
-      <span class="badge">{{hero.lvl}}</span>
-      <span class="nom_legendaire">{{hero.nom_legendaire}}</span>
+      <span class="badge">{{hero.lvl}}</span> {{hero.nom_legendaire}}
     </a>
+    <button type="button" class="delete" title="delete hero"
+      (click)="delete(hero)">x</button>
   </li>
 </ul>
 
