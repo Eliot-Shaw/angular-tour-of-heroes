@@ -86,4 +86,18 @@ export class HeroService {
       catchError(this.handleError<Hero>('deleteHero'))
     );
   }
+
+  /* GET heros whose nom_legendaire contains search term */
+  searchHeros(term: string): Observable<Hero[]> {
+    if (!term.trim()) {
+      // if not search term, return empty hero array.
+      return of([]);
+    }
+    return this.http.get<Hero[]>(`${this.herosUrl}/?nom_legendaire=${term}`).pipe(
+      tap(x => x.length ?
+        this.log(`found heros matching "${term}"`) :
+        this.log(`no heros matching "${term}"`)),
+      catchError(this.handleError<Hero[]>('searchHeros', []))
+    );
+  }
 }
