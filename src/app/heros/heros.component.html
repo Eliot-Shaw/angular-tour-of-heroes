@@ -1,0 +1,13 @@
+<h2>Les heros</h2>
+
+
+<ul class="heros">
+  <li *ngFor="let hero of heros">
+    <a routerLink="/detail/{{hero.id}}">
+      <span class="badge">{{hero.lvl}}</span>
+      <span class="nom_legendaire">{{hero.nom_legendaire}}</span>
+    </a>
+  </li>
+</ul>
+
+<p *ngIf="heros && !(heros.length > 0)">Pas de Heros en vue</p>

@@ -1,0 +1,14 @@
+<div *ngIf="hero">
+    <h2> Details du héro {{hero.id}}</h2>
+    <div>Niveau: {{hero.lvl}}</div>
+    <div>
+      <label for="hero-name">Nom Légendaire: </label>
+      <input id="hero-name" [(ngModel)]="hero.nom_legendaire" placeholder="nom_legendaire">
+    </div>
+</div>
+
+<div *ngIf="!hero">
+  <h3>Rien à voir ici !</h3>
+</div>
+
+<button type="button" (click)="goBack()">go back</button>

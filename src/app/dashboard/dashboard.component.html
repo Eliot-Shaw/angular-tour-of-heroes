@@ -1,0 +1,10 @@
+<h2>Top Heros</h2>
+<div class="heros-menu">
+  <ul class="heros">
+    <li *ngFor="let hero of best_heros">
+      <a routerLink="/detail/{{hero.id}}">
+        <span class="badge">{{hero.lvl}}</span> {{hero.nom_legendaire}}
+      </a>
+    </li>
+  </ul>
+</div>
